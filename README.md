@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prabhanjan Sharma — Developer & Trader Portfolio
 
-## Getting Started
+A dark, terminal-themed portfolio that targets **both** software recruiters and the trading/fintech world. Built from scratch with Next.js.
 
-First, run the development server:
+## Tech stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4**
+- **Framer Motion** — scroll/entrance animations
+- **lightweight-charts** — candlestick trading chart
+- **lucide-react** + inline brand icons
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where to edit
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Everything lives in one file:** [`src/lib/data.ts`](src/lib/data.ts).
+Profile, experience, skills, trading stats, quant tools and projects are all
+there. Anything marked `// TODO` is a placeholder — replace it with your real
+info:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `profile.socials` — your GitHub / TradingView / Medium URLs
+- `trading` — your markets, style and real stats (win rate, R:R, years)
+- `quantTools` — the bots / backtesters / dashboards you've actually built
+- `projects` — your real projects with live + repo links
 
-## Learn More
+## Sections
 
-To learn more about Next.js, take a look at the following resources:
+1. **Hero** — animated terminal headline + ticker tape
+2. **About** — bridge story + metrics
+3. **Experience** — timeline (from your resume)
+4. **Trading Desk** ⭐ — candlestick chart + stats (your differentiator)
+5. **Quant / Tools** ⭐ — trading systems you build with code
+6. **Skills** — Engineering vs Markets
+7. **Projects** — selected builds + achievements
+8. **Contact**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+  app/            layout, page, global theme (globals.css)
+  lib/data.ts     ← single source of truth, edit here
+  components/
+    Nav, Footer
+    CandleChart.tsx
+    sections/     Hero, About, Experience, TradingDesk, QuantTools, Skills, Projects, Contact
+    ui/           Section, Reveal, TerminalWindow, BrandIcons
+```
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Push to GitHub, import into [Vercel](https://vercel.com), done. Add a custom
+domain in Vercel's dashboard.
