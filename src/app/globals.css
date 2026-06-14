@@ -151,6 +151,13 @@ body {
   -webkit-backdrop-filter: saturate(160%) blur(16px);
 }
 
+/* code-viewer syntax tokens */
+.tok-k { color: var(--violet); }
+.tok-s { color: #34d399; }
+.tok-c { color: var(--muted-2); font-style: italic; }
+.tok-n { color: #f59e0b; }
+.tok-key { color: var(--cyan); }
+
 ::selection { background: var(--violet); color: #fff; }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }

@@ -39,13 +39,6 @@ export function Hero() {
       <div className="pointer-events-none relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
         {/* left — copy */}
         <div>
-          <motion.div {...up(0)}>
-            <span className="eyebrow glass rounded-full px-3 py-1.5">
-              <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-green" />
-              Available for work
-            </span>
-          </motion.div>
-
           <motion.h1
             {...up(0.08)}
             className="headline-xl mt-6 text-5xl sm:text-6xl lg:text-7xl"

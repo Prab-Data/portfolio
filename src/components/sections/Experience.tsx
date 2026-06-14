@@ -1,6 +1,47 @@
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { Reveal } from "@/components/ui/Reveal";
-import { experience, achievements } from "@/lib/data";
+import { FileViewer, type ViewerFile } from "@/components/ui/file-viewer";
+import { experience, achievements, type Experience as Job } from "@/lib/data";
+
+const slug = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/\(.*?\)/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+function roleFile(job: Job): string {
+  const stack = job.stack.map((s) => `"${s}"`).join(", ");
+  const highlights = job.bullets
+    .map((b) => `    "${b.replace(/"/g, '\\"')}",`)
+    .join("\n");
+  return `// ${job.company} · ${job.location}
+
+export const role = {
+  title: "${job.role}",
+  company: "${job.company}",
+  period: "${job.period}",
+  stack: [${stack}],
+  highlights: [
+${highlights}
+  ],
+};
+
+export default role;
+`;
+}
+
+const files: ViewerFile[] = [
+  ...experience.map((job) => ({
+    path: `experience/${slug(job.company)}/${slug(job.role)}.ts`,
+    content: roleFile(job),
+  })),
+  {
+    path: "experience/achievements.md",
+    content: `# Achievements\n\n${achievements
+      .map((a) => `- ${a}`)
+      .join("\n")}\n`,
+  },
+];
 
 export function Experience() {
   return (
@@ -8,51 +49,12 @@ export function Experience() {
       <SectionHeading
         eyebrow="Experience"
         title="Built in production."
-        subtitle="Leading teams and shipping full-stack products across roles."
+        subtitle="Browse my work like a codebase — pick a file from the tree to read the role."
       />
 
-      <div className="mt-12 space-y-4">
-        {experience.map((job, i) => (
-          <Reveal key={`${job.company}-${i}`} delay={i * 0.05}>
-            <div className="card card-hover grid gap-5 p-6 sm:grid-cols-[1fr_2.4fr] sm:gap-10 sm:p-8">
-              <div>
-                <div className="text-sm text-muted-2">{job.period}</div>
-                <div className="mt-1.5 font-semibold">{job.company}</div>
-                <div className="mt-0.5 text-sm text-muted-2">{job.location}</div>
-              </div>
-              <div>
-                <h3 className="headline text-xl sm:text-2xl">{job.role}</h3>
-                <ul className="mt-4 space-y-2.5">
-                  {job.bullets.map((b, j) => (
-                    <li key={j} className="flex gap-2.5 text-[15px] leading-relaxed text-muted">
-                      <span className="mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {job.stack.map((t) => (
-                    <span key={t} className="chip">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        ))}
+      <div className="mt-12">
+        <FileViewer files={files} title="experience/" />
       </div>
-
-      <Reveal delay={0.1}>
-        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted">
-          {achievements.map((a) => (
-            <span key={a} className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
-              {a}
-            </span>
-          ))}
-        </div>
-      </Reveal>
     </Section>
   );
 }

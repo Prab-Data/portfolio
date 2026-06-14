@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { ScrollTitle } from "@/components/ScrollTitle";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -11,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Prabhanjan Sharma — Full Stack Developer & Product Engineer",
+  title: "Prabhanjan",
   description:
     "Full-stack product engineer. I design and ship end-to-end web products — scalable backends, polished frontends, shipped fast.",
   keywords: [
@@ -39,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background">
+        <ScrollTitle />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -10,7 +10,10 @@ export function Nav() {
   return (
     <header className="nav-glass fixed inset-x-0 top-0 z-50 border-b border-border">
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <a href="#" className="flex items-center gap-2.5 transition-opacity hover:opacity-80">
+        <a
+          href="#"
+          className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={profile.avatar}
