@@ -10,68 +10,59 @@ const CandleChart = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="h-[320px] w-full animate-pulse rounded-lg bg-surface-2 sm:h-[420px]" />
+      <div className="h-[320px] w-full animate-pulse rounded-2xl bg-white/5 sm:h-[420px]" />
     ),
   }
 );
 
 export function TradingDesk() {
   return (
-    <Section id="trading">
+    <Section id="trading" theme="cloud">
       <SectionHeading
-        index="03"
-        title="Trading Desk"
-        subtitle="Where the engineering meets the markets — the edge that sets this work apart."
+        eyebrow="Markets"
+        title="I trade the markets I build for."
+        subtitle="Discretionary and systematic, derivatives-focused — the edge that sets this work apart."
       />
 
-      <Reveal>
-        <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-6 py-4">
-            <div className="flex items-center gap-3">
-              <span className="pulse-dot h-2 w-2 rounded-full bg-accent" />
-              <span className="text-sm font-medium text-foreground">
-                ETH / USD
-              </span>
-              <span className="eyebrow">1D · {trading.style}</span>
+      <Reveal delay={0.1}>
+        <div className="mt-14 overflow-hidden rounded-[28px] bg-black p-5 shadow-2xl shadow-black/20 sm:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-5">
+            <div className="flex items-baseline gap-3">
+              <span className="text-lg font-semibold text-on-dark">ETH / USD</span>
+              <span className="text-sm text-green">▲ +2.41%</span>
             </div>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
               {trading.markets.map((m) => (
-                <span key={m} className="font-mono text-xs text-muted">
+                <span key={m} className="text-xs text-on-dark-muted">
                   {m}
                 </span>
               ))}
             </div>
           </div>
-
-          <div className="px-4 py-6 sm:px-6">
-            <CandleChart />
-          </div>
+          <CandleChart />
         </div>
       </Reveal>
 
-      <div className="mt-px grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
-        {trading.stats.map((s, i) => (
-          <Reveal key={s.label} delay={i * 0.06}>
-            <div className="h-full bg-background p-6">
-              <div className="font-serif text-3xl font-light text-accent">
+      <Reveal delay={0.15}>
+        <div className="mt-16 grid grid-cols-2 gap-y-12 lg:grid-cols-4">
+          {trading.stats.map((s) => (
+            <div key={s.label} className="text-center">
+              <div className="headline-xl text-4xl text-on-light sm:text-5xl">
                 {s.value}
               </div>
-              <div className="mt-1.5 text-sm text-muted">{s.label}</div>
+              <div className="mt-3 text-sm text-on-light-muted">{s.label}</div>
               {s.note && (
-                <div className="mt-1 font-mono text-[10px] text-amber/70">
-                  {s.note}
-                </div>
+                <div className="mt-1 text-xs text-on-light-muted/70">{s.note}</div>
               )}
             </div>
-          </Reveal>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Reveal>
 
-      <Reveal delay={0.1}>
-        <p className="mt-6 text-xs text-muted">
-          <span className="text-amber">Note —</span> chart is illustrative; wire
-          it to a live exchange feed (Delta / Binance websocket) for real-time
-          data.
+      <Reveal delay={0.2}>
+        <p className="mt-12 text-center text-xs text-on-light-muted/80">
+          Chart is illustrative — wire to a live exchange feed (Delta / Binance
+          websocket) for real-time data.
         </p>
       </Reveal>
     </Section>

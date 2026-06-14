@@ -2,59 +2,58 @@ import { Section, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { skills } from "@/lib/data";
 
-function SkillColumn({
+function SkillCard({
   label,
   title,
   items,
+  delay,
 }: {
   label: string;
   title: string;
   items: string[];
+  delay: number;
 }) {
   return (
-    <div>
-      <div className="eyebrow">{label}</div>
-      <h3 className="mt-3 font-serif text-2xl font-light text-foreground">
-        {title}
-      </h3>
-      <ul className="mt-7 flex flex-col gap-3">
-        {items.map((s) => (
-          <li
-            key={s}
-            className="group flex items-center gap-3 border-b border-border/60 pb-3 text-[15px] text-muted transition-colors hover:text-foreground"
-          >
-            <span className="h-1 w-1 rounded-full bg-accent opacity-60 transition-opacity group-hover:opacity-100" />
-            {s}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Reveal delay={delay} className="h-full">
+      <div className="h-full rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-10">
+        <div className="text-sm font-semibold text-blue">{label}</div>
+        <h3 className="mt-2 headline text-2xl text-on-light sm:text-3xl">{title}</h3>
+        <div className="mt-7 flex flex-wrap gap-2.5">
+          {items.map((s) => (
+            <span
+              key={s}
+              className="rounded-full bg-cloud px-3.5 py-1.5 text-sm text-on-light"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    </Reveal>
   );
 }
 
 export function Skills() {
   return (
-    <Section id="skills">
+    <Section id="skills" theme="cloud">
       <SectionHeading
-        index="05"
-        title="Skills"
-        subtitle="Two disciplines, one operator."
+        eyebrow="Skills"
+        title="Two disciplines, one operator."
       />
-      <div className="grid gap-14 md:grid-cols-2">
-        <Reveal>
-          <SkillColumn
-            label="Discipline 01"
-            title="Engineering"
-            items={skills.engineering}
-          />
-        </Reveal>
-        <Reveal delay={0.1}>
-          <SkillColumn
-            label="Discipline 02"
-            title="Markets"
-            items={skills.markets}
-          />
-        </Reveal>
+
+      <div className="mt-16 grid gap-5 md:grid-cols-2">
+        <SkillCard
+          label="Engineering"
+          title="Building the systems"
+          items={skills.engineering}
+          delay={0}
+        />
+        <SkillCard
+          label="Markets"
+          title="Trading the markets"
+          items={skills.markets}
+          delay={0.1}
+        />
       </div>
     </Section>
   );

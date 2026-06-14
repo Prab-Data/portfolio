@@ -63,11 +63,11 @@ export function CandleChart() {
 
     const series = chart.addSeries(CandlestickSeries, {
       upColor: "#00e58c",
-      downColor: "#ff5c5c",
+      downColor: "#ff5468",
       borderUpColor: "#00e58c",
-      borderDownColor: "#ff5c5c",
+      borderDownColor: "#ff5468",
       wickUpColor: "#00e58c",
-      wickDownColor: "#ff5c5c",
+      wickDownColor: "#ff5468",
     });
 
     series.setData(generateCandles());

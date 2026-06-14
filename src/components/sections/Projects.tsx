@@ -6,59 +6,53 @@ import { projects, achievements } from "@/lib/data";
 
 export function Projects() {
   return (
-    <Section id="projects">
+    <Section id="projects" theme="dark">
       <SectionHeading
-        index="06"
-        title="Projects"
-        subtitle="Selected builds. Swap these for your real work in src/lib/data.ts."
+        eyebrow="Projects"
+        title="Selected work."
+        subtitle="A few things I've shipped. Swap these for your real work in src/lib/data.ts."
       />
 
-      <div className="border-t border-border">
+      <div className="mt-16 grid gap-5 md:grid-cols-3">
         {projects.map((p, i) => (
-          <Reveal key={p.name} delay={i * 0.06}>
-            <div className="group grid gap-4 border-b border-border py-9 transition-colors hover:bg-surface/40 sm:grid-cols-12 sm:items-baseline sm:gap-8 sm:px-4">
-              <div className="font-serif text-3xl font-light text-muted sm:col-span-1">
-                0{i + 1}
+          <Reveal key={p.name} delay={i * 0.07} className="h-full">
+            <div className="group flex h-full flex-col rounded-3xl bg-dark-card p-8 transition-colors hover:bg-dark-card-2">
+              <div className="flex items-start justify-between">
+                <h3 className="text-xl font-semibold text-on-dark">{p.name}</h3>
+                <span className="flex items-center gap-3 text-on-dark-muted">
+                  {p.repo && (
+                    <a
+                      href={p.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${p.name} repository`}
+                      className="cursor-pointer transition-colors hover:text-on-dark"
+                    >
+                      <Github size={18} />
+                    </a>
+                  )}
+                  {p.href && (
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${p.name} live link`}
+                      className="cursor-pointer transition-colors hover:text-blue-bright"
+                    >
+                      <ArrowUpRight size={19} />
+                    </a>
+                  )}
+                </span>
               </div>
-
-              <div className="sm:col-span-7">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-xl font-medium text-foreground transition-colors group-hover:text-accent">
-                    {p.name}
-                  </h3>
-                  <span className="flex items-center gap-3 text-muted">
-                    {p.repo && (
-                      <a
-                        href={p.repo}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="Repository"
-                        className="transition-colors hover:text-accent"
-                      >
-                        <Github size={16} />
-                      </a>
-                    )}
-                    {p.href && (
-                      <a
-                        href={p.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="Live link"
-                        className="transition-colors hover:text-accent"
-                      >
-                        <ArrowUpRight size={17} />
-                      </a>
-                    )}
-                  </span>
-                </div>
-                <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-muted">
-                  {p.blurb}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-x-3 gap-y-1.5 sm:col-span-4 sm:justify-end">
+              <p className="mt-3 flex-1 text-[15px] leading-relaxed text-on-dark-muted">
+                {p.blurb}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-2">
                 {p.tags.map((t) => (
-                  <span key={t} className="font-mono text-xs text-muted">
+                  <span
+                    key={t}
+                    className="rounded-full border border-white/15 px-3 py-1 text-[13px] text-on-dark/80"
+                  >
                     {t}
                   </span>
                 ))}
@@ -69,15 +63,11 @@ export function Projects() {
       </div>
 
       <Reveal delay={0.1}>
-        <div className="mt-16">
-          <div className="eyebrow">Recognition</div>
+        <div className="mx-auto mt-20 max-w-2xl text-center">
+          <div className="text-sm font-semibold text-blue-bright">Recognition</div>
           <ul className="mt-6 space-y-4">
             {achievements.map((a) => (
-              <li
-                key={a}
-                className="flex items-start gap-4 border-b border-border/60 pb-4 text-[15px] text-muted"
-              >
-                <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber" />
+              <li key={a} className="text-[15px] text-on-dark-muted sm:text-base">
                 {a}
               </li>
             ))}

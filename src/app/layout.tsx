@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Fraunces } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -7,21 +7,11 @@ import { Footer } from "@/components/Footer";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
-  subsets: ["latin"],
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  axes: ["opsz"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Prabhanjan Sharma — Full Stack Developer & Trader",
+  title: "Prabhanjan Sharma — Engineer & Trader",
   description:
     "Full Stack Software Developer and active markets trader. I build scalable systems and trade the markets I build for.",
   keywords: [
@@ -34,7 +24,7 @@ export const metadata: Metadata = {
     "Node.js",
   ],
   openGraph: {
-    title: "Prabhanjan Sharma — Full Stack Developer & Trader",
+    title: "Prabhanjan Sharma — Engineer & Trader",
     description:
       "Full Stack Software Developer and active markets trader. Engineering meets the markets.",
     type: "website",
@@ -47,11 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-background">
+    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-black">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

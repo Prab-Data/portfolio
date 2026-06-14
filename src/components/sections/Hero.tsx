@@ -1,95 +1,81 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDownRight, LineChart } from "lucide-react";
-import { Github, Linkedin } from "@/components/ui/BrandIcons";
+import { ChevronRight, ChevronDown } from "lucide-react";
 import { profile } from "@/lib/data";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+const ease = [0.16, 1, 0.3, 1] as const;
+const up = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.9, ease, delay },
+});
 
 export function Hero() {
   return (
-    <section className="relative mx-auto flex min-h-[92vh] max-w-5xl flex-col justify-center px-6 pb-16 pt-28 sm:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease }}
-        className="flex items-center gap-3 eyebrow"
-      >
-        <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-accent" />
-        available for work · {profile.location}
-      </motion.div>
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-6 text-center">
+      {/* ambient glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[70vh]"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 50% 0%, rgba(41,151,255,0.16), transparent 70%)",
+        }}
+      />
 
-      <motion.h1
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease, delay: 0.08 }}
-        className="mt-8 font-serif text-[15vw] font-light leading-[0.92] tracking-tight sm:text-[8.5rem]"
-      >
-        Prabhanjan
-        <br />
-        <span className="text-muted">Sharma</span>
-      </motion.h1>
+      <div className="relative z-10 flex flex-col items-center">
+        <motion.span
+          {...up(0)}
+          className="mb-5 text-base font-semibold tracking-wide text-blue-bright sm:text-lg"
+        >
+          Engineer. Trader. Builder.
+        </motion.span>
 
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease, delay: 0.2 }}
-        className="mt-10 grid gap-8 border-t border-border pt-8 sm:grid-cols-[1fr_auto] sm:items-end"
-      >
-        <div>
-          <p className="max-w-md text-lg leading-relaxed text-muted">
-            {profile.tagline}
-          </p>
-          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-sm">
-            <span className="text-foreground">Full Stack Developer</span>
-            <span className="text-accent">/</span>
-            <span className="text-foreground">Active Markets Trader</span>
-          </div>
-        </div>
+        <motion.h1
+          {...up(0.08)}
+          className="headline-xl max-w-4xl text-6xl text-on-dark sm:text-8xl"
+        >
+          Prabhanjan Sharma
+        </motion.h1>
 
-        <div className="flex flex-col items-start gap-5 sm:items-end">
-          <a
-            href="#trading"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
-          >
-            <span className="link-underline pb-0.5">explore the work</span>
-            <ArrowDownRight
-              size={16}
-              className="text-accent transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"
-            />
+        <motion.p
+          {...up(0.18)}
+          className="mt-6 max-w-2xl text-xl leading-relaxed text-on-dark-muted sm:text-2xl"
+        >
+          {profile.tagline}
+        </motion.p>
+
+        <motion.div
+          {...up(0.28)}
+          className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-4"
+        >
+          <a href="#trading" className="btn-primary cursor-pointer">
+            View the work
           </a>
-          <div className="flex items-center gap-5">
-            <a
-              href={profile.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="text-muted transition-colors hover:text-accent"
-            >
-              <Github size={19} />
-            </a>
-            <a
-              href={profile.socials.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="text-muted transition-colors hover:text-accent"
-            >
-              <Linkedin size={19} />
-            </a>
-            <a
-              href={profile.socials.tradingview}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="TradingView"
-              className="text-muted transition-colors hover:text-accent"
-            >
-              <LineChart size={19} />
-            </a>
-          </div>
-        </div>
-      </motion.div>
+          <a href="#contact" className="btn-link cursor-pointer">
+            Get in touch
+            <ChevronRight className="chev" size={16} />
+          </a>
+        </motion.div>
+      </div>
+
+      <motion.a
+        href="#about"
+        aria-label="Scroll to about"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-8 z-10 cursor-pointer text-on-dark-muted transition-colors hover:text-on-dark"
+      >
+        <motion.span
+          animate={{ y: [0, 7, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="block"
+        >
+          <ChevronDown size={26} />
+        </motion.span>
+      </motion.a>
     </section>
   );
 }
