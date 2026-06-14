@@ -2,40 +2,75 @@
  * ============================================================
  *  EDIT EVERYTHING HERE — single source of truth for the site
  * ============================================================
- *  Sections marked with  // TODO  use sensible placeholders.
- *  Replace them with your real trading details / project links.
  */
 
 export const profile = {
   name: "Prabhanjan Sharma",
-  roles: ["Full Stack Developer", "Active Markets Trader"],
+  roles: ["Full Stack Developer", "Product Engineer"],
   tagline:
-    "I build scalable systems — and trade the markets I build them for.",
+    "I design and ship end-to-end web products — scalable backends, polished frontends, shipped fast.",
   location: "Bangalore, India",
   email: "mprabhanjan18@gmail.com",
   phone: "+91 9172528695",
+  avatar: "/images/avatar.jpg",
   socials: {
-    github: "https://github.com/", // TODO: your GitHub URL
+    github: "https://github.com/prab002",
     linkedin: "https://www.linkedin.com/in/prabhanjan-sharma-38a48a221/",
-    tradingview: "https://www.tradingview.com/", // TODO: your TradingView URL
-    medium: "https://medium.com/", // TODO: your Medium URL
   },
 };
 
 export const about = {
-  // Bridge story tying the two identities together.
   paragraphs: [
-    "I'm a Full Stack Software Developer with a B.Tech in Computer Science (Artificial Intelligence). By day I architect scalable, high-performance backend systems and polished frontends with Next.js, Node.js and Go.",
-    "Outside of shipping product, I trade the markets actively. That gives me a rare edge: I don't just write code, I build the kind of low-latency, data-driven tooling that traders actually need — backtesting engines, execution dashboards and real-time market views.",
-    "This portfolio sits at that intersection: engineering rigor meets market intuition.",
+    "I'm a full-stack product engineer. I take products from zero to production — architecting Node.js backends, building fast React & Next.js frontends, and shipping the details that make software feel like a product.",
+    "Over the last 3+ years I've led teams, wired up dozens of third-party integrations, built authentication flows, and owned the full SDLC from planning to deploy.",
+    "I care about performance, clarity, and the small interactions users never have to think about.",
   ],
   stats: [
-    { label: "API performance gain", value: "~70%" },
-    { label: "User retention via SSR", value: "700%" },
-    { label: "Years building", value: "3+" },
-    { label: "UI/UX improvement", value: "80-90%" },
+    { value: "~70%", label: "Faster APIs" },
+    { value: "700%", label: "Retention via SSR" },
+    { value: "3+", label: "Years shipping" },
+    { value: "12+", label: "Production builds" },
   ],
 };
+
+export type Capability = {
+  title: string;
+  desc: string;
+  icon: string; // lucide-react icon name
+};
+
+export const capabilities: Capability[] = [
+  {
+    title: "Full-stack engineering",
+    desc: "End-to-end modules — React/Next.js frontends on Node.js & Express backends.",
+    icon: "Layers",
+  },
+  {
+    title: "System architecture",
+    desc: "Scalable, maintainable systems and the right tech stack for the job.",
+    icon: "Network",
+  },
+  {
+    title: "Integrations & APIs",
+    desc: "SendGrid, Zoho, Mapbox, Firebase, payment & CRM integrations.",
+    icon: "Plug",
+  },
+  {
+    title: "Auth & security",
+    desc: "JWT, Magic Link, social login and custom verification flows.",
+    icon: "ShieldCheck",
+  },
+  {
+    title: "DevOps & CI/CD",
+    desc: "GitHub Actions pipelines, Vercel & AWS deploys, near-zero downtime.",
+    icon: "Rocket",
+  },
+  {
+    title: "Technical leadership",
+    desc: "Mentoring teams, code review, and shipping on deadline.",
+    icon: "Users",
+  },
+];
 
 export type Experience = {
   company: string;
@@ -48,133 +83,88 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    company: "Webknot",
-    role: "Senior Software Developer",
-    location: "Bangalore, Karnataka",
-    period: "Oct 2025 — Present",
+    company: "Invennico TechnoLabs",
+    role: "Software Development Tech Lead",
+    location: "Vadodara, Gujarat",
+    period: "Jun 2025 — Present",
     bullets: [
-      "Designed and optimized scalable backend architecture, improving API performance by ~70% with near-zero downtime.",
-      "Collaborated with AI/ML teams to integrate AI-driven features into backend systems.",
-      "Enhanced application UI/UX, achieving an 80–90% improvement in usability.",
-      "Mentored junior developers and enforced coding standards through code reviews.",
+      "Architected scalable systems and selected optimal tech stacks aligned with client and business objectives.",
+      "Led end-to-end delivery — onboarding, task allocation and timely shipping within deadlines.",
+      "Optimized CI/CD pipelines and established robust code-review processes for production-ready software.",
+      "Primary technical liaison for clients; mentored the team and drove agile best practices.",
     ],
-    stack: ["Node.js", "Go", "React", "AI Integration", "System Design"],
+    stack: ["Architecture", "CI/CD", "Leadership", "Client Relations"],
   },
   {
     company: "Invennico TechnoLabs",
-    role: "Software Developer — Team Lead",
+    role: "Software Engineer — MERN Stack",
     location: "Vadodara, Gujarat",
-    period: "Apr 2025 — Sep 2025",
+    period: "Jun 2024 — Jun 2025",
     bullets: [
-      "Architected scalable, high-performance systems, owning the full SDLC from planning to post-launch support.",
-      "Led CI/CD pipelines, automated deployments and code review processes.",
-      "Ran daily stand-ups, sprint planning and retrospectives to drive agile delivery.",
+      "Built and deployed complete full-stack modules for live production environments.",
+      "Integrated SendGrid, Mailjet, Zoho CRM, Firebase and Mapbox to extend product functionality.",
+      "Implemented JWT, Magic Link and social-login authentication and custom verification systems.",
+      "Shipped continuously to production while keeping performance high and downtime minimal.",
     ],
-    stack: ["Architecture", "CI/CD", "DevOps", "Leadership"],
-  },
-  {
-    company: "Invennico TechnoLabs",
-    role: "Junior Software Developer (MERN)",
-    location: "Vadodara, Gujarat",
-    period: "Jun 2024 — May 2025",
-    bullets: [
-      "Led full-stack development of a responsive web app on Next.js + MERN stack.",
-      "Engineered SSR with Next.js to boost performance and SEO — 700% increase in user retention.",
-      "Built scalable RESTful APIs and high-performance backend systems.",
-    ],
-    stack: ["Next.js", "React", "Node.js", "MongoDB", "Redux", "AWS S3"],
+    stack: ["Next.js", "Node.js", "Express", "MongoDB", "AWS S3", "JWT"],
   },
   {
     company: "Adrixus Tech Studio",
-    role: "Software Developer Intern (MERN)",
+    role: "MERN Stack Developer — Intern",
     location: "Vadodara, Gujarat",
     period: "Dec 2023 — Jun 2024",
     bullets: [
+      "Contributed to live client products including Volker Munko, Chainpals and ArtByRaff.",
       "Built reusable, responsive React components with Styled Components.",
-      "Contributed to Node.js/Express/MongoDB backends and REST APIs.",
-      "Documented UI with Storybook to streamline collaborative workflows.",
+      "Worked on Spotto — sports collection features and scheduling with the backend team.",
+      "Documented UI with Storybook to streamline collaboration.",
     ],
     stack: ["React", "Styled Components", "Node.js", "Storybook"],
   },
 ];
 
 export const skills = {
-  engineering: [
-    "Next.js",
+  frontend: [
     "React",
+    "Next.js",
     "TypeScript",
     "JavaScript (ES6+)",
     "Tailwind CSS",
-    "Zustand / Redux",
-    "TanStack Query",
-    "Node.js",
-    "Express.js",
-    "Go",
-    "GraphQL",
-    "PostgreSQL",
-    "MongoDB",
-    "Redis",
-    "Kafka / RabbitMQ",
-    "Docker",
-    "AWS S3",
-    "Microservices",
+    "Styled Components",
+    "Redux",
+    "Zustand",
+    "Storybook",
   ],
-  // TODO: tune these to your actual trading toolkit
-  markets: [
-    "Crypto Derivatives",
-    "Options Trading",
-    "Technical Analysis",
-    "Risk Management",
-    "Algorithmic Trading",
-    "Backtesting",
-    "Market Microstructure",
-    "Position Sizing",
-    "Quantitative Strategy",
-  ],
+  backend: ["Node.js", "Express.js", "REST APIs", "JWT Auth", "Firebase"],
+  data: ["MongoDB", "SQL", "Firestore"],
+  cloud: ["AWS S3", "Vercel", "GitHub Actions", "CI/CD", "Git"],
 };
 
-// TODO: replace with your real trading profile
-export const trading = {
-  markets: ["Crypto", "ETH/BTC Options", "Index Derivatives"],
-  style: "Discretionary + systematic, derivatives-focused",
-  stats: [
-    { label: "Win rate", value: "—%", note: "add yours" },
-    { label: "Avg R:R", value: "—", note: "add yours" },
-    { label: "Markets tracked", value: "12+" },
-    { label: "Years trading", value: "—", note: "add yours" },
-  ],
-};
+// Marquee — clean wordmarks (no third-party logos to avoid incorrect brand art).
+export const techStack = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "Express",
+  "MongoDB",
+  "Tailwind CSS",
+  "Redux",
+  "Zustand",
+  "AWS",
+  "Firebase",
+  "Vercel",
+  "Git",
+];
 
-export type QuantTool = {
-  name: string;
-  blurb: string;
-  tags: string[];
-  status: "live" | "wip" | "research";
-};
-
-// TODO: replace with the trading tools / bots you've actually built
-export const quantTools: QuantTool[] = [
-  {
-    name: "Backtesting Engine",
-    blurb:
-      "Event-driven backtester for derivatives strategies with slippage and fee modeling.",
-    tags: ["Python", "Pandas", "Vectorized"],
-    status: "wip",
-  },
-  {
-    name: "Execution Dashboard",
-    blurb:
-      "Real-time positions, PnL and risk view built on a low-latency websocket feed.",
-    tags: ["Next.js", "WebSocket", "Redis"],
-    status: "research",
-  },
-  {
-    name: "Signal Bot",
-    blurb:
-      "Automated indicator-based alerting and order routing to exchange APIs.",
-    tags: ["Node.js", "Exchange API", "Kafka"],
-    status: "research",
-  },
+// Integrations bento card — name + lucide icon
+export const integrations: { name: string; icon: string }[] = [
+  { name: "SendGrid", icon: "Mail" },
+  { name: "Zoho CRM", icon: "Briefcase" },
+  { name: "Firebase", icon: "Flame" },
+  { name: "Mapbox", icon: "Map" },
+  { name: "Stripe", icon: "CreditCard" },
+  { name: "JWT", icon: "KeyRound" },
 ];
 
 export type Project = {
@@ -183,47 +173,68 @@ export type Project = {
   tags: string[];
   href?: string;
   repo?: string;
+  accent: string; // gradient for the cover
+  featured?: boolean;
 };
 
-// TODO: replace with your real projects + links
 export const projects: Project[] = [
   {
-    name: "Project One",
+    name: "LaunchVerse CMS",
     blurb:
-      "Short description of a real product you shipped. What it does and the impact.",
-    tags: ["Next.js", "Node.js", "PostgreSQL"],
-    href: "#",
-    repo: "#",
+      "A content & launch platform for managing and shipping pages — headless content, fast Next.js delivery.",
+    tags: ["Next.js", "Node.js", "MongoDB"],
+    accent: "linear-gradient(135deg, #6366f1, #a855f7)",
+    featured: true,
   },
   {
-    name: "Project Two",
+    name: "Companion API",
     blurb:
-      "Another flagship build — highlight scale, performance or a hard problem solved.",
-    tags: ["React", "Go", "Kafka"],
-    href: "#",
-    repo: "#",
+      "Realtime AI companion backend — websocket sessions, prompt orchestration and streaming responses.",
+    tags: ["Node.js", "Socket.IO", "AI"],
+    accent: "linear-gradient(135deg, #22d3ee, #6366f1)",
+    featured: true,
   },
   {
-    name: "Project Three",
-    blurb: "A side project, open-source tool, or trading utility you're proud of.",
-    tags: ["TypeScript", "Redis", "Docker"],
-    href: "#",
-    repo: "#",
+    name: "Delta Island",
+    blurb:
+      "iOS Dynamic Island / Live Activity extension — live, glanceable updates on the lock screen.",
+    tags: ["iOS", "Live Activity", "Swift"],
+    accent: "linear-gradient(135deg, #a855f7, #ec4899)",
+  },
+  {
+    name: "Spotto",
+    blurb:
+      "Sports collection & scheduling features built with the backend team for a live product.",
+    tags: ["React", "Node.js"],
+    accent: "linear-gradient(135deg, #f59e0b, #ef4444)",
+  },
+  {
+    name: "ArtByRaff",
+    blurb:
+      "Artist storefront & portfolio — reusable UI components and responsive interfaces.",
+    tags: ["React", "Styled Components"],
+    accent: "linear-gradient(135deg, #10b981, #22d3ee)",
+  },
+  {
+    name: "Volker Munko",
+    blurb:
+      "Component development for a live client web app — responsive, accessible UI.",
+    tags: ["React", "CSS"],
+    accent: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
   },
 ];
 
 export const achievements = [
   "1st Place — Codeathon Programming Competition",
   "1st Place — Science Exhibition (Junior Level)",
-  "Technical author on Medium (MERN, Next.js, SSR & SEO, system design)",
+  "B.Tech, Computer Science (AI) — ITM SLS Baroda University",
 ];
 
 export const nav = [
+  { label: "craft", href: "#craft" },
+  { label: "work", href: "#work" },
   { label: "about", href: "#about" },
   { label: "experience", href: "#experience" },
-  { label: "trading", href: "#trading" },
-  { label: "quant", href: "#quant" },
-  { label: "skills", href: "#skills" },
-  { label: "projects", href: "#projects" },
+  { label: "stack", href: "#stack" },
   { label: "contact", href: "#contact" },
 ];
