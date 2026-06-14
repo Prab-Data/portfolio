@@ -12,7 +12,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`mx-auto w-full max-w-6xl scroll-mt-20 px-5 py-20 sm:px-8 sm:py-28 ${className}`}
+      className={`mx-auto w-full max-w-5xl scroll-mt-24 px-6 py-24 sm:px-8 sm:py-36 ${className}`}
     >
       {children}
     </section>
@@ -29,15 +29,18 @@ export function SectionHeading({
   subtitle?: string;
 }) {
   return (
-    <div className="mb-12">
-      <div className="flex items-center gap-3 font-mono text-sm text-accent">
-        <span className="text-muted">{index}</span>
-        <span>//</span>
-        <span>{title}</span>
-        <span className="h-px flex-1 bg-border" />
+    <div className="mb-16">
+      <div className="flex items-baseline gap-4">
+        <span className="eyebrow">({index})</span>
+        <span className="h-px flex-1 translate-y-[-3px] bg-border" />
       </div>
+      <h2 className="mt-5 font-serif text-4xl font-light tracking-tight text-foreground sm:text-6xl">
+        {title}
+      </h2>
       {subtitle && (
-        <p className="mt-4 max-w-2xl text-lg text-muted">{subtitle}</p>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+          {subtitle}
+        </p>
       )}
     </div>
   );

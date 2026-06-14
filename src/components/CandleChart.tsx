@@ -62,11 +62,11 @@ export function CandleChart() {
     });
 
     const series = chart.addSeries(CandlestickSeries, {
-      upColor: "#00ff9d",
+      upColor: "#00e58c",
       downColor: "#ff5c5c",
-      borderUpColor: "#00ff9d",
+      borderUpColor: "#00e58c",
       borderDownColor: "#ff5c5c",
-      wickUpColor: "#00ff9d",
+      wickUpColor: "#00e58c",
       wickDownColor: "#ff5c5c",
     });
 

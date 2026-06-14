@@ -1,7 +1,6 @@
-import { Mail, Phone, LineChart } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Github, Linkedin } from "@/components/ui/BrandIcons";
 import { Section } from "@/components/ui/Section";
-import { TerminalWindow } from "@/components/ui/TerminalWindow";
 import { Reveal } from "@/components/ui/Reveal";
 import { profile } from "@/lib/data";
 
@@ -9,70 +8,87 @@ export function Contact() {
   return (
     <Section id="contact">
       <Reveal>
-        <TerminalWindow title="contact.sh" className="mx-auto max-w-2xl">
-          <pre className="whitespace-pre-wrap text-foreground">
-            <span className="text-accent">$</span> ./connect --with prabhanjan
-            {"\n"}
-            <span className="text-muted">
-              › opening secure channel...
-            </span>
-            {"\n"}
-            <span className="text-accent">› ready.</span>
-          </pre>
+        <div className="eyebrow">(07) — Contact</div>
+        <h2 className="mt-5 max-w-3xl font-serif text-4xl font-light leading-[1.05] tracking-tight sm:text-7xl">
+          Let&apos;s build something —
+          <br />
+          <span className="text-muted">or talk markets.</span>
+        </h2>
+        <p className="mt-7 max-w-md text-lg leading-relaxed text-muted">
+          Open to engineering roles, fintech collaborations and quant projects.
+        </p>
+      </Reveal>
 
-          <h2 className="mt-6 text-2xl font-bold text-foreground">
-            Let&apos;s build something — or talk markets.
-          </h2>
-          <p className="mt-2 text-sm text-muted">
-            Open to engineering roles, fintech collaborations and quant
-            projects.
-          </p>
+      <Reveal delay={0.1}>
+        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
+          <a
+            href={`mailto:${profile.email}`}
+            className="group flex items-center justify-between bg-background p-7 transition-colors hover:bg-surface"
+          >
+            <div>
+              <div className="eyebrow">Email</div>
+              <div className="mt-2 text-lg text-foreground">
+                {profile.email}
+              </div>
+            </div>
+            <ArrowUpRight
+              size={20}
+              className="text-muted transition-colors group-hover:text-accent"
+            />
+          </a>
+          <a
+            href={`tel:${profile.phone.replace(/\s/g, "")}`}
+            className="group flex items-center justify-between bg-background p-7 transition-colors hover:bg-surface"
+          >
+            <div>
+              <div className="eyebrow">Phone</div>
+              <div className="mt-2 text-lg text-foreground">
+                {profile.phone}
+              </div>
+            </div>
+            <ArrowUpRight
+              size={20}
+              className="text-muted transition-colors group-hover:text-accent"
+            />
+          </a>
+        </div>
+      </Reveal>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2.5 font-mono text-sm font-semibold text-[#06120d] transition-transform hover:-translate-y-0.5"
-            >
-              <Mail size={16} /> {profile.email}
-            </a>
-            <a
-              href={`tel:${profile.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2.5 font-mono text-sm text-foreground transition-colors hover:border-accent/50 hover:text-accent"
-            >
-              <Phone size={16} /> {profile.phone}
-            </a>
-          </div>
-
-          <div className="mt-6 flex items-center gap-5 border-t border-border pt-5">
-            <a
-              href={profile.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="text-muted transition-colors hover:text-accent"
-            >
-              <Github size={20} />
-            </a>
-            <a
-              href={profile.socials.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="text-muted transition-colors hover:text-accent"
-            >
-              <Linkedin size={20} />
-            </a>
-            <a
-              href={profile.socials.tradingview}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="TradingView"
-              className="text-muted transition-colors hover:text-accent"
-            >
-              <LineChart size={20} />
-            </a>
-          </div>
-        </TerminalWindow>
+      <Reveal delay={0.15}>
+        <div className="mt-10 flex flex-wrap items-center gap-6">
+          <a
+            href={profile.socials.github}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-accent"
+          >
+            <Github size={18} /> GitHub
+          </a>
+          <a
+            href={profile.socials.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-accent"
+          >
+            <Linkedin size={18} /> LinkedIn
+          </a>
+          <a
+            href={profile.socials.tradingview}
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-muted transition-colors hover:text-accent"
+          >
+            TradingView
+          </a>
+          <a
+            href={profile.socials.medium}
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-muted transition-colors hover:text-accent"
+          >
+            Medium
+          </a>
+        </div>
       </Reveal>
     </Section>
   );

@@ -17,25 +17,26 @@ export function Nav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-colors ${
+      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
         scrolled
-          ? "border-border bg-background/80 backdrop-blur-md"
+          ? "border-border bg-background/70 backdrop-blur-xl"
           : "border-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <a href="#" className="group font-mono text-sm font-semibold">
-          <span className="text-accent">~/</span>
-          <span className="text-foreground">prabhanjan</span>
-          <span className="cursor-blink text-accent">_</span>
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5 sm:px-8">
+        <a
+          href="#"
+          className="font-serif text-lg font-light tracking-tight text-foreground"
+        >
+          PS<span className="text-accent">.</span>
         </a>
 
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className="font-mono text-sm text-muted transition-colors hover:text-accent"
+                className="text-sm text-muted transition-colors hover:text-foreground"
               >
                 {item.label}
               </a>
@@ -44,9 +45,9 @@ export function Nav() {
           <li>
             <a
               href={`mailto:${profile.email}`}
-              className="rounded-md border border-accent/40 px-3 py-1.5 font-mono text-sm text-accent transition-colors hover:bg-accent hover:text-[#06120d]"
+              className="rounded-full border border-border px-4 py-1.5 text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
             >
-              hire_me()
+              Get in touch
             </a>
           </li>
         </ul>
@@ -61,13 +62,13 @@ export function Nav() {
       </nav>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-border bg-background px-5 py-4 md:hidden">
+        <ul className="flex flex-col gap-1 border-t border-border bg-background px-6 py-4 md:hidden">
           {nav.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-2 py-2 font-mono text-sm text-muted hover:bg-surface hover:text-accent"
+                className="block rounded-lg px-2 py-2.5 text-sm text-muted hover:bg-surface hover:text-foreground"
               >
                 {item.label}
               </a>
@@ -77,9 +78,9 @@ export function Nav() {
             <a
               href={`mailto:${profile.email}`}
               onClick={() => setOpen(false)}
-              className="mt-2 block rounded-md border border-accent/40 px-2 py-2 text-center font-mono text-sm text-accent"
+              className="mt-2 block rounded-full border border-border px-2 py-2.5 text-center text-sm text-foreground"
             >
-              hire_me()
+              Get in touch
             </a>
           </li>
         </ul>

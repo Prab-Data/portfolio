@@ -1,130 +1,65 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, LineChart } from "lucide-react";
+import { ArrowDownRight, LineChart } from "lucide-react";
 import { Github, Linkedin } from "@/components/ui/BrandIcons";
 import { profile } from "@/lib/data";
 
-const TICKER = [
-  "BTC +2.4%",
-  "ETH +1.1%",
-  "API_LATENCY -70%",
-  "SOL -0.8%",
-  "UPTIME 99.9%",
-  "NEXT.JS",
-  "GO",
-  "NODE",
-  "WIN_RATE ↑",
-  "REACT",
-];
-
-function useTypewriter(words: string[], speed = 90, pause = 1400) {
-  const [text, setText] = useState("");
-  const [wordIdx, setWordIdx] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const word = words[wordIdx];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!deleting && text === word) {
-      timeout = setTimeout(() => setDeleting(true), pause);
-    } else if (deleting && text === "") {
-      setDeleting(false);
-      setWordIdx((i) => (i + 1) % words.length);
-    } else {
-      timeout = setTimeout(
-        () => {
-          setText((t) =>
-            deleting ? word.slice(0, t.length - 1) : word.slice(0, t.length + 1)
-          );
-        },
-        deleting ? speed / 2 : speed
-      );
-    }
-    return () => clearTimeout(timeout);
-  }, [text, deleting, wordIdx, words, speed, pause]);
-
-  return text;
-}
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
-  const typed = useTypewriter(profile.roles);
-
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
-      <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[680px] -translate-x-1/2 rounded-full opacity-20 blur-[120px]"
-        style={{ background: "var(--accent)" }}
-      />
+    <section className="relative mx-auto flex min-h-[92vh] max-w-5xl flex-col justify-center px-6 pb-16 pt-28 sm:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease }}
+        className="flex items-center gap-3 eyebrow"
+      >
+        <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-accent" />
+        available for work · {profile.location}
+      </motion.div>
 
-      <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-5 py-24 sm:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1.5 font-mono text-xs text-muted backdrop-blur"
-        >
-          <span className="pulse-dot h-2 w-2 rounded-full bg-accent" />
-          available for work · {profile.location}
-        </motion.div>
+      <motion.h1
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease, delay: 0.08 }}
+        className="mt-8 font-serif text-[15vw] font-light leading-[0.92] tracking-tight sm:text-[8.5rem]"
+      >
+        Prabhanjan
+        <br />
+        <span className="text-muted">Sharma</span>
+      </motion.h1>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-6 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight sm:text-6xl"
-        >
-          {profile.name}
-        </motion.h1>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease, delay: 0.2 }}
+        className="mt-10 grid gap-8 border-t border-border pt-8 sm:grid-cols-[1fr_auto] sm:items-end"
+      >
+        <div>
+          <p className="max-w-md text-lg leading-relaxed text-muted">
+            {profile.tagline}
+          </p>
+          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-sm">
+            <span className="text-foreground">Full Stack Developer</span>
+            <span className="text-accent">/</span>
+            <span className="text-foreground">Active Markets Trader</span>
+          </div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-4 font-mono text-xl text-accent sm:text-3xl"
-        >
-          <span className="text-muted">{">"} </span>
-          {typed}
-          <span className="cursor-blink">_</span>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-6 max-w-xl text-lg text-muted"
-        >
-          {profile.tagline}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-9 flex flex-wrap items-center gap-4"
-        >
+        <div className="flex flex-col items-start gap-5 sm:items-end">
           <a
             href="#trading"
-            className="group inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-mono text-sm font-semibold text-[#06120d] transition-transform hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-foreground"
           >
-            view trading desk
-            <ArrowRight
+            <span className="link-underline pb-0.5">explore the work</span>
+            <ArrowDownRight
               size={16}
-              className="transition-transform group-hover:translate-x-1"
+              className="text-accent transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"
             />
           </a>
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-3 font-mono text-sm text-foreground transition-colors hover:border-accent/50 hover:text-accent"
-          >
-            see projects
-          </a>
-
-          <div className="ml-1 flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <a
               href={profile.socials.github}
               target="_blank"
@@ -132,7 +67,7 @@ export function Hero() {
               aria-label="GitHub"
               className="text-muted transition-colors hover:text-accent"
             >
-              <Github size={20} />
+              <Github size={19} />
             </a>
             <a
               href={profile.socials.linkedin}
@@ -141,7 +76,7 @@ export function Hero() {
               aria-label="LinkedIn"
               className="text-muted transition-colors hover:text-accent"
             >
-              <Linkedin size={20} />
+              <Linkedin size={19} />
             </a>
             <a
               href={profile.socials.tradingview}
@@ -150,25 +85,11 @@ export function Hero() {
               aria-label="TradingView"
               className="text-muted transition-colors hover:text-accent"
             >
-              <LineChart size={20} />
+              <LineChart size={19} />
             </a>
           </div>
-        </motion.div>
-      </div>
-
-      {/* Ticker tape */}
-      <div className="relative border-y border-border bg-surface/50 py-3">
-        <div className="flex w-max ticker-track">
-          {[...TICKER, ...TICKER].map((t, i) => (
-            <span
-              key={i}
-              className="mx-6 font-mono text-xs text-muted"
-            >
-              <span className="text-accent">▸</span> {t}
-            </span>
-          ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

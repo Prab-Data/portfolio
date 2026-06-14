@@ -7,59 +7,50 @@ export function Experience() {
     <Section id="experience">
       <SectionHeading
         index="02"
-        title="experience"
+        title="Experience"
         subtitle="Shipping production systems across full-stack and backend roles."
       />
 
-      <div className="relative">
-        {/* timeline rail */}
-        <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border sm:left-[9px]" />
+      <div className="border-t border-border">
+        {experience.map((job, i) => (
+          <Reveal key={`${job.company}-${i}`} delay={i * 0.05}>
+            <div className="group grid gap-6 border-b border-border py-10 transition-colors hover:bg-surface/40 sm:grid-cols-12 sm:gap-8 sm:px-4">
+              <div className="sm:col-span-3">
+                <div className="eyebrow">{job.period}</div>
+                <div className="mt-2 text-sm text-muted">{job.location}</div>
+              </div>
 
-        <div className="space-y-10">
-          {experience.map((job, i) => (
-            <Reveal key={`${job.company}-${i}`} delay={i * 0.05}>
-              <div className="relative pl-8 sm:pl-12">
-                <span className="absolute left-0 top-1.5 h-4 w-4 rounded-full border-2 border-accent bg-background sm:h-5 sm:w-5" />
-                <div className="rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent/30 sm:p-6">
-                  <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {job.role}
-                    </h3>
-                    <span className="font-mono text-xs text-accent">
-                      {job.period}
+              <div className="sm:col-span-9">
+                <h3 className="font-serif text-2xl font-light text-foreground">
+                  {job.role}
+                </h3>
+                <div className="mt-1 text-sm font-medium text-accent">
+                  {job.company}
+                </div>
+
+                <ul className="mt-5 space-y-2.5">
+                  {job.bullets.map((b, j) => (
+                    <li
+                      key={j}
+                      className="flex gap-3 text-[15px] leading-relaxed text-muted"
+                    >
+                      <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-accent" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1.5">
+                  {job.stack.map((tag) => (
+                    <span key={tag} className="font-mono text-xs text-muted">
+                      {tag}
                     </span>
-                  </div>
-                  <div className="mt-1 font-mono text-sm text-muted">
-                    {job.company} · {job.location}
-                  </div>
-
-                  <ul className="mt-4 space-y-2">
-                    {job.bullets.map((b, j) => (
-                      <li
-                        key={j}
-                        className="flex gap-2 text-sm leading-relaxed text-muted"
-                      >
-                        <span className="mt-1 text-accent">▸</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {job.stack.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded border border-border bg-surface-2 px-2 py-0.5 font-mono text-xs text-muted"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
-            </Reveal>
-          ))}
-        </div>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </Section>
   );

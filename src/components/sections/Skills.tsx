@@ -1,38 +1,33 @@
-import { Code2, TrendingUp } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { skills } from "@/lib/data";
 
 function SkillColumn({
+  label,
   title,
-  icon,
   items,
-  accent,
 }: {
+  label: string;
   title: string;
-  icon: React.ReactNode;
   items: string[];
-  accent: string;
 }) {
   return (
-    <div className="rounded-xl border border-border bg-surface p-6">
-      <div className="flex items-center gap-2">
-        <span style={{ color: accent }}>{icon}</span>
-        <h3 className="font-mono text-sm font-semibold text-foreground">
-          {title}
-        </h3>
-      </div>
-      <div className="mt-5 flex flex-wrap gap-2">
+    <div>
+      <div className="eyebrow">{label}</div>
+      <h3 className="mt-3 font-serif text-2xl font-light text-foreground">
+        {title}
+      </h3>
+      <ul className="mt-7 flex flex-col gap-3">
         {items.map((s) => (
-          <span
+          <li
             key={s}
-            className="rounded-md border border-border bg-surface-2 px-3 py-1.5 font-mono text-xs text-muted transition-colors hover:border-current hover:text-foreground"
-            style={{ ["--tw-text-opacity" as string]: "1" }}
+            className="group flex items-center gap-3 border-b border-border/60 pb-3 text-[15px] text-muted transition-colors hover:text-foreground"
           >
+            <span className="h-1 w-1 rounded-full bg-accent opacity-60 transition-opacity group-hover:opacity-100" />
             {s}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
@@ -42,24 +37,22 @@ export function Skills() {
     <Section id="skills">
       <SectionHeading
         index="05"
-        title="skills"
+        title="Skills"
         subtitle="Two disciplines, one operator."
       />
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-14 md:grid-cols-2">
         <Reveal>
           <SkillColumn
-            title="engineering"
-            icon={<Code2 size={18} />}
+            label="Discipline 01"
+            title="Engineering"
             items={skills.engineering}
-            accent="var(--cyan)"
           />
         </Reveal>
         <Reveal delay={0.1}>
           <SkillColumn
-            title="markets"
-            icon={<TrendingUp size={18} />}
+            label="Discipline 02"
+            title="Markets"
             items={skills.markets}
-            accent="var(--accent)"
           />
         </Reveal>
       </div>

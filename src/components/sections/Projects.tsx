@@ -1,4 +1,4 @@
-import { ExternalLink, Trophy } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Github } from "@/components/ui/BrandIcons";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
@@ -9,53 +9,56 @@ export function Projects() {
     <Section id="projects">
       <SectionHeading
         index="06"
-        title="projects"
+        title="Projects"
         subtitle="Selected builds. Swap these for your real work in src/lib/data.ts."
       />
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="border-t border-border">
         {projects.map((p, i) => (
-          <Reveal key={p.name} delay={i * 0.08}>
-            <div className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-all hover:-translate-y-1 hover:border-accent/40">
-              <div className="flex items-start justify-between">
-                <span className="font-mono text-xs text-muted">
-                  0{i + 1}
-                </span>
-                <div className="flex items-center gap-3">
-                  {p.repo && (
-                    <a
-                      href={p.repo}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label="Repository"
-                      className="text-muted transition-colors hover:text-accent"
-                    >
-                      <Github size={16} />
-                    </a>
-                  )}
-                  {p.href && (
-                    <a
-                      href={p.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label="Live link"
-                      className="text-muted transition-colors hover:text-accent"
-                    >
-                      <ExternalLink size={16} />
-                    </a>
-                  )}
-                </div>
+          <Reveal key={p.name} delay={i * 0.06}>
+            <div className="group grid gap-4 border-b border-border py-9 transition-colors hover:bg-surface/40 sm:grid-cols-12 sm:items-baseline sm:gap-8 sm:px-4">
+              <div className="font-serif text-3xl font-light text-muted sm:col-span-1">
+                0{i + 1}
               </div>
-              <h3 className="mt-3 font-semibold text-foreground">{p.name}</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
-                {p.blurb}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
+
+              <div className="sm:col-span-7">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-xl font-medium text-foreground transition-colors group-hover:text-accent">
+                    {p.name}
+                  </h3>
+                  <span className="flex items-center gap-3 text-muted">
+                    {p.repo && (
+                      <a
+                        href={p.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="Repository"
+                        className="transition-colors hover:text-accent"
+                      >
+                        <Github size={16} />
+                      </a>
+                    )}
+                    {p.href && (
+                      <a
+                        href={p.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="Live link"
+                        className="transition-colors hover:text-accent"
+                      >
+                        <ArrowUpRight size={17} />
+                      </a>
+                    )}
+                  </span>
+                </div>
+                <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-muted">
+                  {p.blurb}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-x-3 gap-y-1.5 sm:col-span-4 sm:justify-end">
                 {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded border border-border bg-surface-2 px-2 py-0.5 font-mono text-xs text-muted"
-                  >
+                  <span key={t} className="font-mono text-xs text-muted">
                     {t}
                   </span>
                 ))}
@@ -66,15 +69,15 @@ export function Projects() {
       </div>
 
       <Reveal delay={0.1}>
-        <div className="mt-10 rounded-xl border border-border bg-surface p-6">
-          <div className="flex items-center gap-2 font-mono text-sm font-semibold text-foreground">
-            <Trophy size={16} className="text-amber" />
-            achievements
-          </div>
-          <ul className="mt-4 space-y-2">
+        <div className="mt-16">
+          <div className="eyebrow">Recognition</div>
+          <ul className="mt-6 space-y-4">
             {achievements.map((a) => (
-              <li key={a} className="flex gap-2 text-sm text-muted">
-                <span className="text-amber">▸</span>
+              <li
+                key={a}
+                className="flex items-start gap-4 border-b border-border/60 pb-4 text-[15px] text-muted"
+              >
+                <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber" />
                 {a}
               </li>
             ))}
