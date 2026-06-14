@@ -8,21 +8,24 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="nav-glass fixed inset-x-0 top-0 z-50 border-b border-white/10">
-      <nav className="mx-auto flex h-12 max-w-6xl items-center justify-between px-6">
-        <a
-          href="#"
-          className="text-sm font-semibold tracking-tight text-on-dark transition-opacity hover:opacity-70"
-        >
-          Prabhanjan&nbsp;Sharma
+    <header className="nav-glass fixed inset-x-0 top-0 z-50 border-b border-border">
+      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:px-8">
+        <a href="#" className="flex items-center gap-2.5 transition-opacity hover:opacity-80">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={profile.avatar}
+            alt="Prabhanjan Sharma"
+            className="h-8 w-8 rounded-full object-cover ring-1 ring-border-2"
+          />
+          <span className="text-sm font-semibold tracking-tight">Prabhanjan</span>
         </a>
 
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-1 md:flex">
           {nav.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className="text-[13px] capitalize text-on-dark/80 transition-colors hover:text-on-dark"
+                className="rounded-full px-3 py-1.5 text-[13px] capitalize text-muted transition-colors hover:bg-white/5 hover:text-foreground"
               >
                 {item.label}
               </a>
@@ -30,17 +33,14 @@ export function Nav() {
           ))}
         </ul>
 
-        <a
-          href={`mailto:${profile.email}`}
-          className="hidden text-[13px] text-blue-bright transition-opacity hover:opacity-80 md:inline"
-        >
+        <a href={`mailto:${profile.email}`} className="btn-primary hidden md:inline-flex">
           Get in touch
         </a>
 
         <button
           aria-label="Toggle menu"
           aria-expanded={open}
-          className="cursor-pointer text-on-dark md:hidden"
+          className="cursor-pointer text-foreground md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -48,13 +48,13 @@ export function Nav() {
       </nav>
 
       {open && (
-        <ul className="nav-glass flex flex-col gap-0.5 border-t border-white/10 px-6 py-3 md:hidden">
+        <ul className="nav-glass flex flex-col gap-0.5 border-t border-border px-5 py-3 md:hidden">
           {nav.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-2 py-2.5 text-[15px] capitalize text-on-dark/80 hover:bg-white/5 hover:text-on-dark"
+                className="block rounded-lg px-2 py-2.5 text-[15px] capitalize text-muted hover:bg-white/5 hover:text-foreground"
               >
                 {item.label}
               </a>
@@ -64,7 +64,7 @@ export function Nav() {
             <a
               href={`mailto:${profile.email}`}
               onClick={() => setOpen(false)}
-              className="mt-1 block rounded-lg px-2 py-2.5 text-[15px] text-blue-bright"
+              className="btn-primary mt-2 w-full justify-center"
             >
               Get in touch
             </a>

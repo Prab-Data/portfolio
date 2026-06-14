@@ -1,51 +1,39 @@
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
-import { experience } from "@/lib/data";
+import { experience, achievements } from "@/lib/data";
 
 export function Experience() {
   return (
-    <Section id="experience" theme="dark">
+    <Section id="experience">
       <SectionHeading
         eyebrow="Experience"
-        title="Shipping production systems."
-        subtitle="Full-stack and backend roles, built for scale and speed."
+        title="Built in production."
+        subtitle="Leading teams and shipping full-stack products across roles."
       />
 
-      <div className="mt-16 sm:mt-20">
+      <div className="mt-12 space-y-4">
         {experience.map((job, i) => (
-          <Reveal key={`${job.company}-${i}`} delay={i * 0.04}>
-            <div className="grid gap-5 border-t border-white/10 py-10 sm:grid-cols-[1fr_2.2fr] sm:gap-12 sm:py-14">
+          <Reveal key={`${job.company}-${i}`} delay={i * 0.05}>
+            <div className="card card-hover grid gap-5 p-6 sm:grid-cols-[1fr_2.4fr] sm:gap-10 sm:p-8">
               <div>
-                <div className="text-sm text-on-dark-muted">{job.period}</div>
-                <div className="mt-1.5 text-lg font-semibold text-on-dark">
-                  {job.company}
-                </div>
-                <div className="mt-0.5 text-sm text-on-dark-muted">
-                  {job.location}
-                </div>
+                <div className="text-sm text-muted-2">{job.period}</div>
+                <div className="mt-1.5 font-semibold">{job.company}</div>
+                <div className="mt-0.5 text-sm text-muted-2">{job.location}</div>
               </div>
-
               <div>
-                <h3 className="headline text-2xl text-on-dark sm:text-3xl">
-                  {job.role}
-                </h3>
-                <ul className="mt-5 space-y-3">
+                <h3 className="headline text-xl sm:text-2xl">{job.role}</h3>
+                <ul className="mt-4 space-y-2.5">
                   {job.bullets.map((b, j) => (
-                    <li
-                      key={j}
-                      className="text-[15px] leading-relaxed text-on-dark-muted sm:text-base"
-                    >
-                      {b}
+                    <li key={j} className="flex gap-2.5 text-[15px] leading-relaxed text-muted">
+                      <span className="mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet" />
+                      <span>{b}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {job.stack.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/15 px-3 py-1 text-[13px] text-on-dark/80"
-                    >
-                      {tag}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {job.stack.map((t) => (
+                    <span key={t} className="chip">
+                      {t}
                     </span>
                   ))}
                 </div>
@@ -54,6 +42,17 @@ export function Experience() {
           </Reveal>
         ))}
       </div>
+
+      <Reveal delay={0.1}>
+        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted">
+          {achievements.map((a) => (
+            <span key={a} className="inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
+              {a}
+            </span>
+          ))}
+        </div>
+      </Reveal>
     </Section>
   );
 }

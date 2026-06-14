@@ -2,58 +2,40 @@ import { Section, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { skills } from "@/lib/data";
 
-function SkillCard({
-  label,
-  title,
-  items,
-  delay,
-}: {
-  label: string;
-  title: string;
-  items: string[];
-  delay: number;
-}) {
-  return (
-    <Reveal delay={delay} className="h-full">
-      <div className="h-full rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-10">
-        <div className="text-sm font-semibold text-blue">{label}</div>
-        <h3 className="mt-2 headline text-2xl text-on-light sm:text-3xl">{title}</h3>
-        <div className="mt-7 flex flex-wrap gap-2.5">
-          {items.map((s) => (
-            <span
-              key={s}
-              className="rounded-full bg-cloud px-3.5 py-1.5 text-sm text-on-light"
-            >
-              {s}
-            </span>
-          ))}
-        </div>
-      </div>
-    </Reveal>
-  );
-}
+const groups: { label: string; items: string[] }[] = [
+  { label: "Frontend", items: skills.frontend },
+  { label: "Backend", items: skills.backend },
+  { label: "Data", items: skills.data },
+  { label: "Cloud & DevOps", items: skills.cloud },
+];
 
 export function Skills() {
   return (
-    <Section id="skills" theme="cloud">
+    <Section id="stack">
       <SectionHeading
-        eyebrow="Skills"
-        title="Two disciplines, one operator."
+        eyebrow="Stack"
+        title="The toolkit."
+        subtitle="What I reach for to design, build and ship."
       />
 
-      <div className="mt-16 grid gap-5 md:grid-cols-2">
-        <SkillCard
-          label="Engineering"
-          title="Building the systems"
-          items={skills.engineering}
-          delay={0}
-        />
-        <SkillCard
-          label="Markets"
-          title="Trading the markets"
-          items={skills.markets}
-          delay={0.1}
-        />
+      <div className="mt-12 grid gap-4 sm:grid-cols-2">
+        {groups.map((g, i) => (
+          <Reveal key={g.label} delay={i * 0.06} className="h-full">
+            <div className="card card-hover h-full p-6 sm:p-7">
+              <div className="text-gradient text-sm font-semibold">{g.label}</div>
+              <div className="mt-4 flex flex-wrap gap-2.5">
+                {g.items.map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-full border border-border-2 bg-white/[0.02] px-3 py-1.5 text-sm text-foreground/90 transition-colors hover:border-white/25"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </Section>
   );

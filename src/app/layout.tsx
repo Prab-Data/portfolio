@@ -11,22 +11,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Prabhanjan Sharma — Engineer & Trader",
+  title: "Prabhanjan Sharma — Full Stack Developer & Product Engineer",
   description:
-    "Full Stack Software Developer and active markets trader. I build scalable systems and trade the markets I build for.",
+    "Full-stack product engineer. I design and ship end-to-end web products — scalable backends, polished frontends, shipped fast.",
   keywords: [
     "Prabhanjan Sharma",
     "Full Stack Developer",
+    "Product Engineer",
     "Next.js",
-    "Trader",
-    "Quant",
     "React",
     "Node.js",
+    "MERN",
   ],
   openGraph: {
-    title: "Prabhanjan Sharma — Engineer & Trader",
+    title: "Prabhanjan Sharma — Full Stack Developer & Product Engineer",
     description:
-      "Full Stack Software Developer and active markets trader. Engineering meets the markets.",
+      "Full-stack product engineer. I design and ship end-to-end web products.",
     type: "website",
   },
 };
@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-black">
+      <body className="min-h-full flex flex-col bg-background">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
