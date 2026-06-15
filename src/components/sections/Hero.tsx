@@ -3,8 +3,8 @@
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
-import { Github } from "@/components/ui/BrandIcons";
 import { HeroCard } from "@/components/HeroCard";
+import { LinkedInBadge } from "@/components/LinkedInBadge";
 import { profile } from "@/lib/data";
 
 // 3D Spline scene — client-only (no SSR), so it never blocks the page render.
@@ -75,14 +75,7 @@ export function Hero() {
             <span className="inline-flex items-center gap-1.5">
               <MapPin size={15} /> {profile.location}
             </span>
-            <a
-              href={profile.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-            >
-              <Github size={15} /> @prab002
-            </a>
+            <LinkedInBadge />
           </motion.div>
         </div>
 
