@@ -137,6 +137,8 @@ export function ExpandableCard({
             <img
               src={src}
               alt={title}
+              loading="lazy"
+              decoding="async"
               className="h-56 w-64 rounded-lg object-cover object-center"
             />
           </motion.div>

@@ -147,8 +147,8 @@ body {
 /* nav glass */
 .nav-glass {
   background: rgba(8, 8, 11, 0.6);
-  backdrop-filter: saturate(160%) blur(16px);
-  -webkit-backdrop-filter: saturate(160%) blur(16px);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
 }
 
 /* code-viewer syntax tokens */

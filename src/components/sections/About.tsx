@@ -53,6 +53,8 @@ export function About() {
             <img
               src="/images/desk-bw.jpg"
               alt="Prabhanjan's workspace"
+              loading="lazy"
+              decoding="async"
               className="aspect-[4/3] w-full object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5">
