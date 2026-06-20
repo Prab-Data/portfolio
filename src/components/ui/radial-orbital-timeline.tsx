@@ -31,6 +31,7 @@ export default function RadialOrbitalTimeline({
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
   const [pulseEffect, setPulseEffect] = useState<Record<number, boolean>>({});
   const [activeNodeId, setActiveNodeId] = useState<number | null>(null);
+  const [inView, setInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
@@ -77,6 +78,20 @@ export default function RadialOrbitalTimeline({
     });
   };
 
+  // Only run the rotation loop while the orbit is actually on screen, so it
+  // never burns the main thread (re-rendering) when you're reading other
+  // sections of the page.
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   useEffect(() => {
     // Respect users who prefer reduced motion — keep the orbit still.
     const prefersReduced =
@@ -85,19 +100,20 @@ export default function RadialOrbitalTimeline({
 
     let rotationTimer: ReturnType<typeof setInterval> | undefined;
 
-    if (autoRotate && !prefersReduced) {
+    if (autoRotate && inView && !prefersReduced) {
+      // Slow, calm drift — ~12 ticks/sec keeps it smooth without hammering React.
       rotationTimer = setInterval(() => {
         setRotationAngle((prev) => {
-          const newAngle = (prev + 0.3) % 360;
+          const newAngle = (prev + 0.15) % 360;
           return Number(newAngle.toFixed(3));
         });
-      }, 50);
+      }, 80);
     }
 
     return () => {
       if (rotationTimer) clearInterval(rotationTimer);
     };
-  }, [autoRotate]);
+  }, [autoRotate, inView]);
 
   const centerViewOnNode = (nodeId: number) => {
     if (!nodeRefs.current[nodeId]) return;
@@ -139,7 +155,7 @@ export default function RadialOrbitalTimeline({
   return (
     <div
       className="relative flex w-full items-center justify-center overflow-hidden"
-      style={{ height: radius * 2 + 220 }}
+      style={{ height: radius * 2 + 150 }}
       ref={containerRef}
       onClick={handleContainerClick}
     >
