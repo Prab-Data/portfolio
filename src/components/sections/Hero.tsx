@@ -5,7 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import { HeroCard } from "@/components/HeroCard";
 import { LinkedInBadge } from "@/components/LinkedInBadge";
+import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
 import { profile } from "@/lib/data";
+
+const headlineSpring = { type: "spring", stiffness: 200, damping: 22 } as const;
 
 // 3D Spline scene — client-only (no SSR), so it never blocks the page render.
 const SplineBackground = dynamic(
@@ -39,14 +42,35 @@ export function Hero() {
       <div className="pointer-events-none relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
         {/* left — copy */}
         <div>
-          <motion.h1
-            {...up(0.08)}
-            className="headline-xl mt-6 text-5xl sm:text-6xl lg:text-7xl"
-          >
-            I build <span className="text-gradient">products</span>
-            <br />
-            that ship.
-          </motion.h1>
+          <h1 className="headline-xl mt-6 text-5xl sm:text-6xl lg:text-7xl">
+            <span className="flex flex-wrap items-baseline gap-x-[0.28em]">
+              <VerticalCutReveal
+                splitBy="words"
+                staggerDuration={0.06}
+                staggerFrom="first"
+                transition={{ ...headlineSpring, delay: 0.1 }}
+              >
+                I build
+              </VerticalCutReveal>
+              <VerticalCutReveal
+                splitBy="words"
+                staggerDuration={0.06}
+                staggerFrom="first"
+                elementLevelClassName="text-gradient"
+                transition={{ ...headlineSpring, delay: 0.28 }}
+              >
+                products
+              </VerticalCutReveal>
+            </span>
+            <VerticalCutReveal
+              splitBy="words"
+              staggerDuration={0.06}
+              staggerFrom="first"
+              transition={{ ...headlineSpring, delay: 0.42 }}
+            >
+              that ship.
+            </VerticalCutReveal>
+          </h1>
 
           <motion.p
             {...up(0.16)}

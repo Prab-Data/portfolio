@@ -200,6 +200,16 @@ const u = (id: string) =>
 
 export const projects: Project[] = [
   {
+    name: "Disk Analyzer for Mac",
+    blurb:
+      "Native macOS disk-usage visualizer — scans any folder and renders it as an interactive d3 treemap. Parallel Rust filesystem scanning, drill-down zoom, and reveal-in-Finder / move-to-Trash actions.",
+    tags: ["Tauri", "Rust", "React"],
+    repo: "https://github.com/prab002/disk-analyzer-mac",
+    image:
+      "https://raw.githubusercontent.com/prab002/disk-analyzer-mac/main/docs/screenshot.png",
+    featured: true,
+  },
+  {
     name: "LaunchVerse CMS",
     blurb:
       "A content & launch platform for managing and shipping pages — headless content, fast Next.js delivery.",

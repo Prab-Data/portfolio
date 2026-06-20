@@ -1,24 +1,7 @@
-import {
-  Layers,
-  Network,
-  Plug,
-  ShieldCheck,
-  Rocket,
-  Users,
-  type LucideIcon,
-} from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
-import { about, capabilities } from "@/lib/data";
-
-const icons: Record<string, LucideIcon> = {
-  Layers,
-  Network,
-  Plug,
-  ShieldCheck,
-  Rocket,
-  Users,
-};
+import { CapabilityOrbit } from "@/components/ui/capability-orbit";
+import { about } from "@/lib/data";
 
 export function About() {
   return (
@@ -65,22 +48,14 @@ export function About() {
         </Reveal>
       </div>
 
-      {/* capabilities */}
-      <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {capabilities.map((c, i) => {
-          const Icon = icons[c.icon] ?? Layers;
-          return (
-            <Reveal key={c.title} delay={i * 0.05}>
-              <div className="card card-hover h-full p-6">
-                <span className="grid h-10 w-10 place-items-center rounded-xl border border-border-2 bg-white/[0.03] text-violet">
-                  <Icon size={18} />
-                </span>
-                <h3 className="mt-4 font-semibold">{c.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">{c.desc}</p>
-              </div>
-            </Reveal>
-          );
-        })}
+      {/* capabilities — an orbital constellation of what I do */}
+      <div className="mt-16">
+        <Reveal>
+          <p className="text-center text-sm text-muted">
+            What I do — tap a node to explore how it connects.
+          </p>
+          <CapabilityOrbit />
+        </Reveal>
       </div>
     </Section>
   );
