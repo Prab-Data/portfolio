@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" fill="none">
+  <defs>
+    <linearGradient id="oc-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a12"/>
+      <stop offset="1" stop-color="#0c0a18"/>
+    </linearGradient>
+    <radialGradient id="oc-violet" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#a855f7" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="oc-cyan" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="oc-text" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c7c8ff"/>
+      <stop offset="0.5" stop-color="#a855f7"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="oc-bubble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+    <pattern id="oc-dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#ffffff" fill-opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- base -->
+  <rect width="1200" height="520" fill="url(#oc-bg)"/>
+  <rect width="1200" height="520" fill="url(#oc-dots)"/>
+  <circle cx="1010" cy="60" r="300" fill="url(#oc-violet)"/>
+  <circle cx="160" cy="470" r="260" fill="url(#oc-cyan)"/>
+
+  <!-- macOS menu bar -->
+  <rect x="0" y="0" width="1200" height="46" fill="#ffffff" fill-opacity="0.05"/>
+  <line x1="0" y1="46" x2="1200" y2="46" stroke="#ffffff" stroke-opacity="0.08"/>
+  <g fill="#c9c9d6" fill-opacity="0.8">
+    <circle cx="980" cy="23" r="3.4"/>
+    <circle cx="1010" cy="23" r="3.4"/>
+    <circle cx="1040" cy="23" r="3.4"/>
+  </g>
+  <!-- highlighted claw menu item -->
+  <rect x="1066" y="6" width="40" height="34" rx="9" fill="#a855f7" fill-opacity="0.22" stroke="#a855f7" stroke-opacity="0.6"/>
+  <text x="1086" y="33" font-size="22" text-anchor="middle">🦞</text>
+  <text x="1140" y="30" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#c9c9d6">9:41</text>
+
+  <!-- dropdown chat panel -->
+  <g>
+    <path d="M1086 46 l-9 12 h18 z" fill="#15151d"/>
+    <rect x="772" y="58" width="372" height="338" rx="18" fill="#15151d" stroke="#ffffff" stroke-opacity="0.1"/>
+    <!-- header -->
+    <text x="796" y="96" font-size="18">🦞</text>
+    <text x="824" y="98" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="600" fill="#ededf2">OpenClaw</text>
+    <circle cx="1112" cy="92" r="5" fill="#34d399"/>
+    <line x1="792" y1="116" x2="1124" y2="116" stroke="#ffffff" stroke-opacity="0.08"/>
+    <!-- assistant bubble -->
+    <rect x="792" y="134" width="208" height="46" rx="13" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="808" y="150" width="150" height="6" rx="3" fill="#ffffff" fill-opacity="0.35"/>
+    <rect x="808" y="164" width="100" height="6" rx="3" fill="#ffffff" fill-opacity="0.2"/>
+    <!-- user bubble -->
+    <rect x="916" y="196" width="208" height="46" rx="13" fill="url(#oc-bubble)"/>
+    <rect x="932" y="212" width="150" height="6" rx="3" fill="#ffffff" fill-opacity="0.8"/>
+    <rect x="932" y="226" width="96" height="6" rx="3" fill="#ffffff" fill-opacity="0.55"/>
+    <!-- assistant bubble 2 -->
+    <rect x="792" y="258" width="180" height="32" rx="13" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="808" y="271" width="120" height="6" rx="3" fill="#ffffff" fill-opacity="0.3"/>
+    <!-- input -->
+    <rect x="792" y="338" width="332" height="40" rx="12" fill="#0c0a14" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="810" y="363" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#7b7b8a">Message Claude…</text>
+    <rect x="1090" y="346" width="26" height="24" rx="8" fill="#a855f7"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="78" y="262" font-family="Inter, system-ui, sans-serif" font-size="84" font-weight="700" letter-spacing="-3" fill="#f4f4f8">Open<tspan fill="url(#oc-text)">Claw</tspan></text>
+
+  <!-- tagline -->
+  <text x="82" y="312" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="500" fill="#b7b7c6">Claude in your macOS menu bar</text>
+
+  <!-- shortcut pill -->
+  <g>
+    <rect x="82" y="346" width="150" height="42" rx="11" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.14"/>
+    <text x="106" y="374" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" font-weight="600" fill="#e9e9f2">⌘ ⇧ O</text>
+  </g>
+  <text x="248" y="374" font-family="Inter, system-ui, sans-serif" font-size="17" fill="#8b8cf9">one shortcut away</text>
+</svg>

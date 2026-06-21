@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" fill="none">
+  <defs>
+    <linearGradient id="re-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0a12"/><stop offset="1" stop-color="#0c0a18"/></linearGradient>
+    <radialGradient id="re-violet" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#a855f7" stop-opacity="0.5"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/></radialGradient>
+    <radialGradient id="re-cyan" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#22d3ee" stop-opacity="0.3"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+    <linearGradient id="re-text" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c7c8ff"/><stop offset="0.5" stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <linearGradient id="re-bar" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <pattern id="re-dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#ffffff" fill-opacity="0.05"/></pattern>
+  </defs>
+
+  <rect width="1200" height="520" fill="url(#re-bg)"/>
+  <rect width="1200" height="520" fill="url(#re-dots)"/>
+  <circle cx="1010" cy="60" r="300" fill="url(#re-violet)"/>
+  <circle cx="170" cy="470" r="240" fill="url(#re-cyan)"/>
+
+  <!-- skyline illustration -->
+  <g stroke="#a855f7" stroke-opacity="0.6" stroke-width="2.5" fill="#a855f7" fill-opacity="0.10" stroke-linejoin="round">
+    <!-- left building -->
+    <rect x="772" y="250" width="86" height="180" rx="6"/>
+    <!-- tall building -->
+    <rect x="872" y="180" width="78" height="250" rx="6"/>
+    <!-- house -->
+    <path d="M978 300 v120 h130 v-120 l-65 -46 z"/>
+  </g>
+  <!-- windows -->
+  <g fill="#22d3ee" fill-opacity="0.55">
+    <rect x="786" y="272" width="14" height="14" rx="2"/><rect x="812" y="272" width="14" height="14" rx="2"/>
+    <rect x="786" y="300" width="14" height="14" rx="2"/><rect x="812" y="300" width="14" height="14" rx="2"/>
+    <rect x="786" y="328" width="14" height="14" rx="2"/><rect x="812" y="328" width="14" height="14" rx="2"/>
+    <rect x="888" y="206" width="14" height="14" rx="2"/><rect x="914" y="206" width="14" height="14" rx="2"/>
+    <rect x="888" y="234" width="14" height="14" rx="2"/><rect x="914" y="234" width="14" height="14" rx="2"/>
+    <rect x="888" y="262" width="14" height="14" rx="2"/><rect x="914" y="262" width="14" height="14" rx="2"/>
+  </g>
+  <!-- house door -->
+  <rect x="1028" y="372" width="30" height="48" rx="4" fill="#22d3ee" fill-opacity="0.55"/>
+  <!-- location pin -->
+  <g transform="translate(1043,150)">
+    <path d="M0 0 C-22 0 -34 16 -34 34 C-34 58 0 86 0 86 C0 86 34 58 34 34 C34 16 22 0 0 0 Z" fill="#a855f7"/>
+    <circle cx="0" cy="33" r="13" fill="#0c0a18"/>
+  </g>
+
+  <!-- pill -->
+  <g>
+    <rect x="80" y="58" width="226" height="42" rx="21" fill="#f59e0b" fill-opacity="0.12" stroke="#f59e0b" stroke-opacity="0.55"/>
+    <circle cx="106" cy="79" r="6" fill="#f59e0b"/>
+    <text x="124" y="85" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="600" letter-spacing="1.5" fill="#fcd9a3">IN PROGRESS</text>
+  </g>
+
+  <!-- wordmark -->
+  <text x="78" y="262" font-family="Inter, system-ui, sans-serif" font-size="80" font-weight="700" letter-spacing="-3" fill="#f4f4f8">Real <tspan fill="url(#re-text)">Estate</tspan></text>
+
+  <!-- tagline -->
+  <text x="82" y="312" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="500" fill="#b7b7c6">Listings · map search · bookings</text>
+
+  <!-- progress bar -->
+  <rect x="82" y="350" width="360" height="10" rx="5" fill="#ffffff" fill-opacity="0.08"/>
+  <rect x="82" y="350" width="220" height="10" rx="5" fill="url(#re-bar)"/>
+  <text x="452" y="359" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#8b8cf9">Building now</text>
+</svg>

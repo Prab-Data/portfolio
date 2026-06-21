@@ -192,13 +192,23 @@ export type Project = {
   repo?: string;
   image: string; // cover image (placeholder Unsplash for now)
   featured?: boolean;
+  status?: "wip"; // currently building — shown as an upcoming/in-progress card
 };
 
-// NOTE: images are placeholder Unsplash stock — swap with real project shots.
+// Placeholder Unsplash stock helper (used by blog posts).
 const u = (id: string) =>
   `https://images.unsplash.com/photo-${id}?w=900&auto=format&fit=crop&q=60`;
 
 export const projects: Project[] = [
+  {
+    name: "Real Estate Platform",
+    blurb:
+      "Currently building — a modern real-estate platform for property listings, map-based search and bookings, with saved properties and an agent dashboard.",
+    tags: ["Next.js", "Node.js", "Maps"],
+    image: "/images/realestate-cover.svg",
+    status: "wip",
+    featured: true,
+  },
   {
     name: "Disk Analyzer for Mac",
     blurb:
@@ -210,48 +220,66 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    name: "LaunchVerse CMS",
+    name: "LaunchVerse",
     blurb:
-      "A content & launch platform for managing and shipping pages — headless content, fast Next.js delivery.",
-    tags: ["Next.js", "Node.js", "MongoDB"],
-    image: u("1498050108023-c5249f4df085"),
+      "India's talent & opportunities platform for students (Grades 8–12) — a national innovation hunt where students surface real problems, build prototypes and pitch to mentors, with AI-powered profiles that grow their portfolio.",
+    tags: ["Next.js", "Node.js", "AI"],
+    href: "https://launchverse.org/",
+    image: "/images/launchverse-cover.svg",
     featured: true,
   },
   {
-    name: "Companion API",
+    name: "OpenClaw",
     blurb:
-      "Realtime AI companion backend — websocket sessions, prompt orchestration and streaming responses.",
-    tags: ["Node.js", "Socket.IO", "AI"],
-    image: u("1620712943543-bcc4688e7485"),
+      "A macOS menu-bar app for Claude — chat from anywhere with ⌘⇧O, switch between Sonnet & Opus, drag-and-drop files, and keep history. Built on Electron over a local gateway.",
+    tags: ["Electron", "macOS", "AI"],
+    repo: "https://github.com/prab002/openclaw-header",
+    image: "/images/openclaw.gif",
     featured: true,
   },
   {
-    name: "Delta Island",
+    name: "Royalties LLC",
     blurb:
-      "iOS Dynamic Island / Live Activity extension — live, glanceable updates on the lock screen.",
-    tags: ["iOS", "Live Activity", "Swift"],
-    image: u("1531297484001-80022131f5a1"),
+      "A published mobile app for Royalties LLC, shipped and live on the Google Play Store.",
+    tags: ["Mobile App", "Android"],
+    href: "https://play.google.com/store/apps/details?id=com.royalty_app.royalty_app",
+    image: "/images/royalty-cover.svg",
+    featured: true,
   },
   {
-    name: "Spotto",
+    name: "Snag-Zilla",
     blurb:
-      "Sports collection & scheduling features built with the backend team for a live product.",
-    tags: ["React", "Node.js"],
-    image: u("1551434678-e076c223a692"),
+      "An on-demand rental marketplace — rent products & service pros, delivered and picked up at your door, with scheduled bookings and Stripe payments.",
+    tags: ["iOS", "Marketplace", "Stripe"],
+    href: "https://apps.apple.com/in/app/snag-zilla-rent-stuff-pros/id6751220203",
+    image: "/images/snagzilla-cover.svg",
+    featured: true,
+  },
+  {
+    name: "Sahaj Darshan",
+    blurb:
+      "A platform for planning temple pilgrimages across India — authentic darshan info, trusted travel & stay options, and experienced purohits to make every journey easy and fulfilling.",
+    tags: ["Next.js", "WordPress", "Travel"],
+    href: "https://sahajdarshan.com/",
+    image: "/images/sahajdarshan.png",
+    featured: true,
+  },
+  {
+    name: "Power Club",
+    blurb:
+      "Power Club for Schools — a research-backed curriculum for Career Design & College Readiness, helping students plan their path with expert-led programs.",
+    tags: ["Next.js", "EdTech"],
+    href: "https://www.power.club/",
+    image: "/images/powerclub.jpg",
+    featured: true,
   },
   {
     name: "ArtByRaff",
     blurb:
-      "Artist storefront & portfolio — reusable UI components and responsive interfaces.",
+      "Storefront & portfolio for a Vienna-based pop-art & mixed-media artist — gallery, shop and commissions.",
     tags: ["React", "Styled Components"],
-    image: u("1487058792275-0ad4aaf24ca7"),
-  },
-  {
-    name: "Volker Munko",
-    blurb:
-      "Component development for a live client web app — responsive, accessible UI.",
-    tags: ["React", "CSS"],
-    image: u("1461749280684-dccba630e2f6"),
+    href: "https://www.artbyraff.com/",
+    image: "/images/artbyraff.jpg",
   },
 ];
 
